@@ -1,10 +1,4 @@
-日々私たちが過ごしている日常は、実は、奇跡の連続なのかもしれない。
-
-我们所经历的每个平凡的日常，也许就是连续发生的奇迹。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——《日常》
-
----
-
-大陆可搭配[Pixiv-Nginx](https://github.com/mashirozx/Pixiv-Nginx)使用，既添加项目中的hosts，并保留nginx.conf内`## Pixiv Start`与`## Pixiv End`之间的内容，非大陆则反之。
+大陆可搭配[Pixiv-Nginx](https://github.com/mashirozx/Pixiv-Nginx)使用，既添加项目中的hosts，并保留nginx.conf内`## Pixiv Start`与`## Pixiv End`之间的内容，环大陆则反之。
 
 ---
 
