@@ -4,6 +4,10 @@
 
 ---
 
+大陆可搭配[Pixiv-Nginx](https://github.com/mashirozx/Pixiv-Nginx)使用，既添加项目中的hosts，并保留nginx.conf内`## Pixiv Start`与`## Pixiv Start`之间的内容，非大陆则反之。
+
+---
+
 #### 使用方法：
 
 #### 1. 反向代理：
