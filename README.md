@@ -1,4 +1,5 @@
-大陆可搭配[Pixiv-Nginx](https://github.com/mashirozx/Pixiv-Nginx)使用，既添加项目中的hosts，并保留nginx.conf内`## Pixiv Start`与`## Pixiv End`之间的内容，环大陆则反之。
+大陆可搭配[Pixiv-Nginx](https://github.com/mashirozx/Pixiv-Nginx)使用，既添加项目中的hosts，并保留nginx.conf内`## Pixiv Start`与`## Pixiv End`之间的内容，环大陆则反之，删除nginx.conf内`## Pixiv Start`与`## Pixiv End`之间的内容。
+若决定搭配Pixiv-Nginx使用，需注意本项目内的[CA证书](https://github.com/muxmus/pixiv-python/tree/main/conf/ca)同样来源于[Pixiv-Nginx](https://github.com/mashirozx/Pixiv-Nginx/blob/main/6.安全及隐私声明.txt)，若不信任可尝试自签证书
 
 ---
 
@@ -6,15 +7,15 @@
 
 #### 1. 反向代理：
 
-将P站图片网址中的 <font color=#0051af>i.pximg.net</font> 替换为 <font color=#0051af>i.muxmus.com</font>
+将P站图片网址中的 <font color=#0051af>https://i.pximg.net</font> 替换为 <font color=#0051af>http://localhost:8080</font>
 
 例如：
 
-https://<font color=#0051af>i.pximg.net</font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
+<font color=#0051af>https://i.pximg.net</font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
 
 ↓
 
-https://<font color=#0051af>i.muxmus.com</font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
+<font color=#0051af>http://localhost:8080</font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
 
 #### 2. 通过图片id抓取原图（实验性）：
 
@@ -24,25 +25,25 @@ https://<font color=#0051af>i.muxmus.com</font>/img-original/img/2011/11/05/00/3
 
 + 单张，一个id中只有一张图片或多张中的第一张：
 
-	https://<font>i.muxmus.com/</font><font color=#0051af>id</font>
+	http://localhost:8080/<font color=#0051af>id</font>
  
- 	https://<font>i.muxmus.com/</font><font color=#0051af>22848009</font>
+ 	http://localhost:8080/<font color=#0051af>22848009</font>
 
 + 多张（漫画、组图），一个id中有多张图片：
 
-	https://<font>i.muxmus.com/</font><font color=#0051af>id</font>-<font color=#0051af>第几张</font>
+	http://localhost:8080/<font color=#0051af>id</font>-<font color=#0051af>第几张</font>
  
-	https://<font>i.muxmus.com/</font><font color=#0051af>22848009</font>-<font color=#0051af>1</font>
+	http://localhost:8080/<font color=#0051af>22848009</font>-<font color=#0051af>1</font>
 
 + 指定扩展名（优先级较高，非必要请勿使用，如需使用请确保指定的扩展名正确）：
 
-	https://<font>i.muxmus.com/</font><font color=#0051af>id</font>.<font color=#0051af>扩展名</font>
+	http://localhost:8080/<font color=#0051af>id</font>.<font color=#0051af>扩展名</font>
  
-	https://<font>i.muxmus.com/</font><font color=#0051af>22848009</font>.<font color=#0051af>jpg</font>
+	http://localhost:8080/<font color=#0051af>22848009</font>.<font color=#0051af>jpg</font>
 
-	https://<font>i.muxmus.com/</font><font color=#0051af>id</font>-<font color=#0051af>第几张</font>.<font color=#0051af>扩展名</font>
+	http://localhost:8080/<font color=#0051af>id</font>-<font color=#0051af>第几张</font>.<font color=#0051af>扩展名</font>
  
-	https://<font>i.muxmus.com/</font><font color=#0051af>22848009</font>-<font color=#0051af>1</font>.<font color=#0051af>jpg</font>
+	http://localhost:8080/<font color=#0051af>22848009</font>-<font color=#0051af>1</font>.<font color=#0051af>jpg</font>
 
 注意事项：
 
