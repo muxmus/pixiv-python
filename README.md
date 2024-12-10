@@ -8,15 +8,15 @@
 
 #### 1. 反向代理：
 
-将P站图片网址中的 <font color=#0051af>https://i.pximg.net</font> 替换为 <font color=#0051af>http://localhost:8080</font>
+将P站图片网址中的 <font color=#0051af>https://<font>i.pximg.net</font></font> 替换为 <font color=#0051af>http://<font>localhost:8080</font></font>
 
 例如：
 
-<font color=#0051af>https://i.pximg.net</font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
+<font color=#0051af>https://<font>i.pximg.net</font></font></font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
 
 ↓
 
-<font color=#0051af>http://localhost:8080</font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
+<font color=#0051af>http://<font>localhost:8080</font></font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
 
 #### 2. 通过图片id抓取原图（实验性）：
 
@@ -26,25 +26,25 @@
 
 + 单张，一个id中只有一张图片或多张中的第一张：
 
-	http://localhost:8080/<font color=#0051af>id</font>
+	http://<font>localhost:8080</font>/<font color=#0051af>id</font>
  
- 	http://localhost:8080/<font color=#0051af>22848009</font>
+ 	http://<font>localhost:8080</font>/<font color=#0051af>22848009</font>
 
 + 多张（漫画、组图），一个id中有多张图片：
 
-	http://localhost:8080/<font color=#0051af>id</font>-<font color=#0051af>第几张</font>
+	http://<font>localhost:8080</font>/<font color=#0051af>id</font>-<font color=#0051af>第几张</font>
  
-	http://localhost:8080/<font color=#0051af>22848009</font>-<font color=#0051af>1</font>
+	http://<font>localhost:8080</font>/<font color=#0051af>22848009</font>-<font color=#0051af>1</font>
 
 + 指定扩展名（优先级较高，非必要请勿使用，如需使用请确保指定的扩展名正确）：
 
-	http://localhost:8080/<font color=#0051af>id</font>.<font color=#0051af>扩展名</font>
+	http://<font>localhost:8080</font>/<font color=#0051af>id</font>.<font color=#0051af>扩展名</font>
  
-	http://localhost:8080/<font color=#0051af>22848009</font>.<font color=#0051af>jpg</font>
+	http://<font>localhost:8080</font>/<font color=#0051af>22848009</font>.<font color=#0051af>jpg</font>
 
-	http://localhost:8080/<font color=#0051af>id</font>-<font color=#0051af>第几张</font>.<font color=#0051af>扩展名</font>
+	http://<font>localhost:8080</font>/<font color=#0051af>id</font>-<font color=#0051af>第几张</font>.<font color=#0051af>扩展名</font>
  
-	http://localhost:8080/<font color=#0051af>22848009</font>-<font color=#0051af>1</font>.<font color=#0051af>jpg</font>
+	http://<font>localhost:8080</font>/<font color=#0051af>22848009</font>-<font color=#0051af>1</font>.<font color=#0051af>jpg</font>
 
 注意事项：
 
