@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="theme-color" content="#97a791">
+		<title>Pixiv图片代理 ~ 木辛木杉</title>
+		<link rel="shortcut icon" type="image/x-icon" href="https://muxmus.com/favicon.ico">
+		<link rel="stylesheet" href="https://muxmus.com/css/404.css">
+		<link rel="stylesheet" href="https://file.muxmus.com/css/lxgw-wenkai-screen-web/style.css">
+		<style>
+			div a img:hover {
+				opacity: 1 !important;
+			}
+		</style>
+	</head>
+	<body bgcolor="#97a791" style="font-family: 'LXGW WenKai GB Screen'; font-weight: normal; width: min(calc(100% - 16px), 800px); margin: 20px 8px; left: 50%; position: relative; transform: translateX(calc(-50% - 8px)); cursor: default; word-break: break-all;">
+		<p>日々私たちが過ごしている日常は、実は、奇跡の連続なのかもしれない。</p>
+		<p>我们所经历的每个平凡的日常，也许就是连续发生的奇迹。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——《日常》</p>
+		<p>----------------------------------------</p>
+		<h4>使用方法：</h4>
+		<h4>1. 反向代理：</h4>
+		<p>将P站图片网址中的 <span style="color:#0051af">i.pximg.net</span> 替换为 <span style="color:#0051af">i.muxmus.com</span></p>
+		<p>例如：</p>
+		<p>https://<span style="color:#0051af">i.pximg.net</span>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg</p>
+		<img style="width:min(100%,400px)" src="https://i.pximg.net/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg">
+		<p>↓</p>
+		<p>https://<span style="color:#0051af">i.muxmus.com</span>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg</p>
+		<img style="width:min(100%,400px)" src="http://localhost:8080/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg">
+		<h4>2. 通过图片id抓取原图（实验性）：</h4>
+		<p style="color:#b00000;">! 实验性功能，建议仅在无法获取原图网址时使用 !</p>
+		<p>格式：</p>
+		<ul>
+			<li>
+				<p>单张，一个id中只有一张图片或多张中的第一张：</p>
+				<p>http://localhost:8080/<span style="color:#0051af">id</span></p>
+				<p>http://localhost:8080/<span style="color:#0051af">22848009</span></p>
+			</li>
+			<li>
+				<p>多张（漫画、组图），一个id中有多张图片：</p>
+				<p>http://localhost:8080/<span style="color:#0051af">id</span>-<span style="color:#0051af">第几张</span></p>
+				<p>http://localhost:8080/<span style="color:#0051af">22848009</span>-<span style="color:#0051af">1</span></p>
+			</li>
+			<li>
+				<p>指定扩展名（优先级较高，非必要请勿使用，如需使用请确保指定的扩展名正确）：</p>
+				<p>http://localhost:8080/<span style="color:#0051af">id</span>.<span style="color:#0051af">扩展名</span></p>
+				<p>http://localhost:8080/<span style="color:#0051af">22848009</span>.<span style="color:#0051af">jpg</span></p>
+				<p>http://localhost:8080/<span style="color:#0051af">id</span>-<span style="color:#0051af">第几张</span>.<span style="color:#0051af">扩展名</span></p>
+				<p>http://localhost:8080/<span style="color:#0051af">22848009</span>-<span style="color:#0051af">1</span>.<span style="color:#0051af">jpg</span></p>
+			</li>
+		</ul>
+		<p>注意事项：</p>
+		<ul>
+			<li>
+				<p>id：作品页网址最后的一串数字，如“https://www.pixiv.net/artworks/22848009”当中的“22848009”。<a target="_blank" href="https://www.pixiv.help/hc/zh-cn/articles/235585168-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BD%9C%E5%93%81ID" style="color:#0051af">什么是作品ID？</a></p>
+			</li>
+			<li>
+				<p>该功能通过爬取id对应的html页面获取原图网址，并进行代理。由于只能得到第一张图片的网址，多张的话，第一张之外的扩展名都是未知的，所以默认都采用第一张的扩展名。但由<a target="_blank" href="https://www.pixiv.help/hc/zh-cn/articles/235584428-%E5%8F%AF%E4%BB%A5%E5%9C%A8pixiv%E4%B8%8A%E6%8A%95%E7%A8%BF%E4%BB%80%E4%B9%88%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F" style="color:#0051af">可以在pixiv上投稿什么图片格式</a>可知，目前在P站如果同时投稿多种格式的图片，P站会将其全部转换为jpg。所以第三种格式——指定扩展名好像没什么用，只能说战未来！万一哪天P站不帮忙转格式了呢（绝对不是因为我写程序前没看官方的帮助文档）。</p>
+			</li>
+			<li>
+				<p>P站的动图并非gif而是多张jpg循环播放，如果请求的是动图，会返回第一帧的jpg。</p>
+			</li>
+			<li>
+				<p>P站的图片扩展名目前有且仅有jpg、png、gif三种，注意此处的gif并非gif动图，只是gif格式的静态图片。<a target="_blank" href="https://www.pixiv.help/hc/zh-cn/articles/235584428-%E5%8F%AF%E4%BB%A5%E5%9C%A8pixiv%E4%B8%8A%E6%8A%95%E7%A8%BF%E4%BB%80%E4%B9%88%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F" style="color:#0051af">可以在pixiv上投稿什么图片格式</a>&nbsp;&nbsp;<a target="_blank" href="https://www.pixiv.help/hc/zh-cn/articles/235584588-%E5%A6%82%E4%BD%95%E5%9C%A8pixiv%E4%B8%8A%E6%8A%95%E7%A8%BF%E6%8F%92%E7%94%BB" style="color:#0051af">如何在pixiv上投稿插画？</a></p>
+			</li>
+		</ul>
+		<div style="text-align: center;">
+			<a target="_blank" href="https://github.com/muxmus/pixiv-python">
+				<img style="width: 50px; height: 50px; cursor: pointer; opacity: .7;" src="https://muxmus.com/img/github.svg">
+			</a>
+		</div>
+	</body>
+</html>
