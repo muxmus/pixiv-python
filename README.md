@@ -1,4 +1,4 @@
-在线使用可访问：[https://i.muxmus.com](https://i.muxmus.com)，本地使用可阅读一下内容：
+在线使用可访问：[https://i.muxmus.com](https://i.muxmus.com)，本地使用可阅读以下内容：
 
 ---
 
