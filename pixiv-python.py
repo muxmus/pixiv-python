@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 @app.route('/<path:path>', methods=['GET', 'POST'])
 def image(path):
+    #解析请求
     if '-' in path and '.' in path:
         pid = path.split('-')[0]
         pNum = str(int(path.split('-')[1].split('.')[0]) - 1)
@@ -26,11 +27,15 @@ def image(path):
     else:
         pid = path
 
+    #忽略https证书错误，因为反代后非原证书
     requests.packages.urllib3.disable_warnings()
+    #请求对应的artworks网页
     response = requests.get(f"https://www.pixiv.net/artworks/{pid}", headers=headers, verify=False)
     if response.status_code != 200:
+        #若失败则返回对应状态码
         return make_response('', response.status_code)
     else:
+        #若成功则分析html内容中的原图网址并重定向为反代网址
         html = response.content
 
         soup = BeautifulSoup(html, 'html.parser')
@@ -38,7 +43,7 @@ def image(path):
 
         jsonData = links.get('content')
         content = json.loads(jsonData)
-        url = content['illust'][f'{pid}']['urls']['original'].replace("i.pximg.net", "i.muxmus.com:5000")
+        url = content['illust'][f'{pid}']['urls']['original'].replace("https://i.pximg.net", "http://localhost:8080")
 
         if 'pNum' in locals().keys() and 'fileEx' in locals().keys():
             url = url.replace('_p0.', f'_p{pNum}.')
@@ -51,4 +56,4 @@ def image(path):
         return redirect(f'{url}')
 
 if __name__ == '__main__':
-    app.run(port=7000)
+    app.run(port=8088)
