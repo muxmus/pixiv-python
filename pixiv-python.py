@@ -47,9 +47,11 @@ def image(path):
 
         if 'pNum' in locals().keys() and 'fileEx' in locals().keys():
             url = url.replace('_p0.', f'_p{pNum}.')
+            url = url.replace('_ugoira0.', f'_ugoira{pNum}.')
             url = url.rsplit('.', 1)[0] + f'.{fileEx}'
         elif 'pNum' in locals().keys():
             url = url.replace('_p0.', f'_p{pNum}.')
+            url = url.replace('_ugoira0.', f'_ugoira{pNum}.')
         elif 'fileEx' in locals().keys():
             url = url.rsplit('.', 1)[0] + f'.{fileEx}'
 
