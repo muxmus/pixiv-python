@@ -22,9 +22,7 @@
 
 <font color=#0051af>http://<font>localhost:8080</font></font>/img-original/img/2011/11/05/00/32/32/22848009_p0.jpg
 
-#### 2. 通过图片id抓取原图（实验性）：
-
-<font color=#b00000>! 实验性功能，建议仅在无法获取原图网址时使用 !</font>
+#### 2. 通过图片id抓取原图：
 
 格式：
 
