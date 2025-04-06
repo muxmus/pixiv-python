@@ -29,21 +29,16 @@ def image(path):
 
     #忽略https证书错误，因为反代后非原证书
     requests.packages.urllib3.disable_warnings()
-    #请求对应的artworks网页
-    response = requests.get(f"https://www.pixiv.net/artworks/{pid}", headers=headers, verify=False)
-    if response.status_code != 200:
+    #请求id对应的ajax api
+    response = requests.get(f"https://www.pixiv.net/ajax/illust/{pid}/pages?lang=zh", headers=headers, verify=False)
+    if not response.ok:
         #若失败则返回对应状态码
         return make_response('', response.status_code)
     else:
-        #若成功则分析html内容中的原图网址并重定向为反代网址
+        #若成功则分析api中的原图网址并重定向为反代网址
         html = response.content
-
-        soup = BeautifulSoup(html, 'html.parser')
-        links = soup.find('meta', id='meta-preload-data')
-
-        jsonData = links.get('content')
-        content = json.loads(jsonData)
-        url = content['illust'][f'{pid}']['urls']['original'].replace("https://i.pximg.net", "http://localhost:8080")
+        content = json.loads(html)
+        url = content['body'][0]['urls']['original'].replace("i.pximg.net", "localhost:8080")
 
         if 'pNum' in locals().keys() and 'fileEx' in locals().keys():
             url = url.replace('_p0.', f'_p{pNum}.')
