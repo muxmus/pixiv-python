@@ -2,6 +2,11 @@
 
 ---
 
+#### 更新日志：
++ 2025.4.6 - 由于pixiv的html内容调整，原先方法以失效，现改为直接调用api而非爬取html
+
+---
+
 大陆可搭配[Pixiv-Nginx](https://github.com/mashirozx/Pixiv-Nginx)使用，既添加项目中的hosts，并保留nginx.conf内`## Pixiv Start`与`## Pixiv End`之间的内容，环大陆则反之，删除nginx.conf内`## Pixiv Start`与`## Pixiv End`之间的内容。
 
 若决定搭配Pixiv-Nginx使用，需注意本项目内的[CA证书](https://github.com/muxmus/pixiv-python/tree/main/conf/ca)同样来源于[Pixiv-Nginx](https://github.com/mashirozx/Pixiv-Nginx/blob/main/6.安全及隐私声明.txt)，若不信任可尝试自签证书
